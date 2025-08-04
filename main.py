@@ -1,15 +1,13 @@
 from functions import *
 
-x = 2
-y = 2
-
-print("Hello World")
 
 def main():
-    print(sum(x, y))
-    print(sub(x, y))
-    print(multi(x, y))
-    print(div(x, y))
+    print("Welcome in calculator, enter your arguments:")
+    x = input("first argument: ")
+    y = input("second argument: ")
+    print("What calculation would you like to make (+-*/): ")
+    calc = input("calculation method: ")
 
+    print(operation(calc, int(x), int(y)))
 if __name__ == '__main__':
     main()

@@ -1,43 +1,35 @@
-def sum(x, y):
-    if type(x) == str:
-        print("x should be a number") 
-    elif type(y) == str:
-        print("y should be a number")
-    else:
-        print(x + y)
+def sum(*numbers):
+    result = numbers[0]
+    for n in numbers[1:]:
+        result += n
+    print(result)
 
-def sub(x, y):
-    if type(x) == str:
-        print("x should be a number") 
-    elif type(y) == str:
-        print("y should be a number")
-    else:
-        print(x - y)
+def sub(*numbers):
+    result = numbers[0]
+    for n in numbers[1:]:
+        result -= n
+    print(result)
 
-def multi(x, y):
-    if type(x) == str:
-        print("x should be a number") 
-    elif type(y) == str:
-        print("y should be a number")
-    else:
-        print(x * y)
+def multi(*numbers):
+    result = numbers[0]
+    for n in numbers[1:]:
+        result *= n
+    print(result)
 
-def div(x, y):
-    if type(x) == str:
-        print("x should be a number") 
-    elif type(y) == str:
-        print("y should be a number")
-    else:
-        print(x / y)
-    
-def operation(calc, x, y):
+def div(*numbers):
+    result = numbers[0]
+    for n in numbers[1:]:
+        result /= n
+    print(result)
+
+def operation(calc, *numbers):
     if calc == "+":
-        sum(x,y)
+        sum(*numbers)
     elif calc == "-":
-        sub(x,y)
+        sub(*numbers)
     elif calc == "*":
-        multi(x,y)
+        multi(*numbers)
     elif calc == "/":
-        div(x,y)
+        div(*numbers)
     else:
         return("Wrong calculation option. (+-*/)")

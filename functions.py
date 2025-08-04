@@ -1,3 +1,6 @@
+from ast import While
+
+
 def sum(x, y):
     if type(x) == str:
         return "x should be a number"

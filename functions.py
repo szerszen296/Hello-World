@@ -111,7 +111,5 @@ def print_result(calc, x, y):
     except ZeroDivisionError:
         print("Error: Division by zero is not allowed.")
         return x
-    except ZeroDivisionError:
-        print("Error: Division by zero is not allowed.")
-        return x
+
 

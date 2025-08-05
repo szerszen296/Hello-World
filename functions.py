@@ -75,5 +75,5 @@ def print_result(calc, x, y):
         return result
     except ZeroDivisionError:
         print("Error: Division by zero is not allowed.")
-        return x  # return previous result if division fails
+        return x 
 

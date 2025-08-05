@@ -1,12 +1,15 @@
 from functions import *
 
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+
 def main():
     print("Welcome in calculator, enter your arguments:")
     try:
         while True:
-            x = get_number("first argument: ")
+            x = get_arg("first argument (can be a list: list1, list2): ", list1, list2)
             calc = get_calc()
-            y = get_number("second argument: ")
+            y = get_arg("second argument (can be a list: list1, list2): ", list1, list2)
             result = print_result(calc, x, y)
 
             while True:
@@ -14,10 +17,7 @@ def main():
                 if calc == "":
                     exit()
                 calc = calcoprators(calc)
-                y_input = input("second argument (press enter to finish): ")
-                if y_input == "":
-                    exit()
-                y = float(y_input)
+                y = get_arg("second argument (can be a list: list1, list2) (press enter to finish): ", list1, list2)
                 result = print_result(calc, result, y)
     except Exception as e:
         print(f"An error occurred: {e}")

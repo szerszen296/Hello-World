@@ -1,6 +1,3 @@
-from ast import While
-
-
 def sum(x, y):
     if type(x) == str:
         return "x should be a number"
@@ -71,9 +68,16 @@ def get_number(prompt):
 def print_result(calc, x, y):
     try:
         result = operation(calc, x, y)
-        print(result)
         return result
     except ZeroDivisionError:
         print("Error: Division by zero is not allowed.")
         return x 
+    
+def append_calculation(in1, in2, list, do_print):
+    if in1 != "":
+        list.append(in1)
+    if in2 != "":
+        list.append(in2)
+    if do_print == True:
+        print(list)
 

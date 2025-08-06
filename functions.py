@@ -85,8 +85,8 @@ def get_arg(prompt, *_):
         try:
             return float(val)
         except ValueError:
-            print("Invalid input. Please enter a number or a comma-separated list.")
-            return get_arg(prompt)
+            return 0
+           
 
 
 def print_result(calc, x, y):
@@ -103,7 +103,12 @@ def print_result(calc, x, y):
                 nums.extend(y)
             elif isinstance(y, (int, float)):
                 nums.append(y)
+            elif listx and y == "":
+                sum(x)
+            elif listy and x == "":
+                sum(y)
             result = sum(nums)
+            
         else:
             if listx or listy:
                 print("Only adding is possible for lists.")

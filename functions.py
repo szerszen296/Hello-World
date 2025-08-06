@@ -73,20 +73,21 @@ def get_number(prompt):
     else:
         return input(prompt)
 
-def get_arg(prompt, list1, lsit2):
-    val = input(prompt)
-    if val == "list1":
-        return list1
-    elif val == "list2" or val == "lsit2":
-        return lsit2
-    elif val == "":
-        return None
+def get_arg(prompt, *_):
+    val = input(prompt).strip()
+    if "," in val:
+        try:
+            return [float(v.strip()) for v in val.split(",")]
+        except ValueError:
+            print("Invalid list input. Please enter valid numbers separated by commas.")
+            return get_arg(prompt)
     else:
         try:
             return float(val)
         except ValueError:
-            print("Invalid input, please enter a number or list name.")
-            return get_arg(prompt, list1, lsit2)
+            print("Invalid input. Please enter a number or a comma-separated list.")
+            return get_arg(prompt)
+
 
 def print_result(calc, x, y):
     try:
@@ -114,17 +115,6 @@ def print_result(calc, x, y):
     except ZeroDivisionError:
         print("Error: Division by zero is not allowed.")
         return x
-
-def list_input(input_prompt):
-    inpprmt = input(input_prompt).split(",")
-    nums = []
-    for num in inpprmt:
-        num = num.strip()
-        try:
-            nums.append(float(num))
-        except ValueError:
-            continue
-    return nums
 
 
 

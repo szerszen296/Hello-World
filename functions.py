@@ -90,26 +90,42 @@ def get_arg(prompt, list1, lsit2):
 
 def print_result(calc, x, y):
     try:
-        if calc == "+" and (isinstance(x, list) or isinstance(y, list)):
+        listx = isinstance(x, list)
+        listy = isinstance(y, list)
+        if calc == "+" and (listx or listy):
             nums = []
-            if isinstance(x, list):
+            if listx:
                 nums.extend(x)
             elif isinstance(x, (int, float)):
                 nums.append(x)
-            if isinstance(y, list):
+            if listy:
                 nums.extend(y)
             elif isinstance(y, (int, float)):
                 nums.append(y)
             result = sum(nums)
         else:
-            if isinstance(x, list) or isinstance(y, list):
+            if listx or listy:
                 print("Only adding is possible for lists.")
                 return None
             result = suma(x, y) if calc == "+" else operation(calc, x, y)
+        result = round(result, 1)
         print(result)
         return result
     except ZeroDivisionError:
         print("Error: Division by zero is not allowed.")
         return x
+
+def list_input(input_prompt):
+    inpprmt = input(input_prompt).split(",")
+    nums = []
+    for num in inpprmt:
+        num = num.strip()
+        try:
+            nums.append(float(num))
+        except ValueError:
+            continue
+    return nums
+
+
 
 

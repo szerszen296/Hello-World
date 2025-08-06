@@ -71,7 +71,7 @@ def get_number(prompt):
     elif prompt == "":
         return None
     else:
-        return input(prompt)
+        return input(prompt) 
 
 def get_arg(prompt, *_):
     val = input(prompt).strip()

@@ -50,13 +50,6 @@ def calcoprators(calc):
             exit()
     return calc
 
-def result_handler(calc, x, y):
-    try:
-        result = operation(calc, float(x), float(y))
-        return(result)
-    except ZeroDivisionError:
-        print("Error: Division by zero is not allowed.")
-
 def get_calc():
     print("What calculation would you like to make (+-*/): ")
     calc = input("calculation method: ")
@@ -74,10 +67,42 @@ def print_result(calc, x, y):
         return x 
     
 def append_calculation(in1, in2, list, do_print):
-    if in1 != "":
-        list.append(in1)
-    if in2 != "":
-        list.append(in2)
-    if do_print == True:
+    entry = {}
+    if in2 in ["+", "-", "*", "/"]:
+        entry = {"first": in1, "operator": in2}
+        list.append(entry)
+    elif in2 == "=":
+        entry = {"second": in1}
+        list.append(entry)
+    elif in1 in ["+", "-", "*", "/"] and isinstance(in2, (int, float)):
+        entry = {"operator": in1, "second": in2}
+        list.append(entry)
+    elif in1 == "=":
+        entry = {"result": in2}
+        list.append(entry)
+        list.append({"first": in2})
+        if do_print:
+            print(list)
+        return
+    elif in1 not in ["+", "-", "*", "/"]:
+        if not isinstance(in1, str) or not in1 in ["+", "-", "*", "/", "="]:
+            entry = {"result": in1}
+            list.append(entry)
+            list.append({"first": in1})
+            if do_print:
+                print(list)
+            return
+        else:
+            return
+    else:
+        return
+    if do_print:
         print(list)
+
+def history(list1):
+    print("History:")
+    for entry in list1:
+        if entry.get("operator") == "=":
+            continue
+        print(entry)
 

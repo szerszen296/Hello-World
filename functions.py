@@ -64,43 +64,17 @@ def print_result(calc, x, y):
         return result
     except ZeroDivisionError:
         print("Error: Division by zero is not allowed.")
-        return x 
-    
-def append_calculation(in1, in2, list, do_print):
+        return x
+
+def append_calculation(in1, in2, in3, in4, list, do_print):
     entry = {}
-    if in2 in ["+", "-", "*", "/"]:
-        entry = {"first": in1, "operator": in2}
-        list.append(entry)
-    elif in2 == "=":
-        entry = {"second": in1}
-        list.append(entry)
-    elif in1 in ["+", "-", "*", "/"] and isinstance(in2, (int, float)):
-        entry = {"operator": in1, "second": in2}
-        list.append(entry)
-    elif in1 == "=":
-        entry = {"result": in2}
-        list.append(entry)
-        list.append({"first": in2})
-        if do_print:
-            print(list)
-        return
-    elif in1 not in ["+", "-", "*", "/"]:
-        if not isinstance(in1, str) or not in1 in ["+", "-", "*", "/", "="]:
-            entry = {"result": in1}
-            list.append(entry)
-            list.append({"first": in1})
-            if do_print:
-                print(list)
-            return
-        else:
-            return
-    else:
-        return
+    entry = {"first": in1, "operator": in2, "second": in3, "result": in4}
+    list.append(entry)
     if do_print:
         print(list)
+    
 
 def history(list1):
-    print("History:")
     for entry in list1:
         if entry.get("operator") == "=":
             continue

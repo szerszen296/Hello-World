@@ -1,6 +1,3 @@
-from ast import While
-
-
 def suma(x, y):
     if type(x) == str:
         return "x should be a number"
